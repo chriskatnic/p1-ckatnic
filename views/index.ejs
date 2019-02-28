@@ -1,0 +1,26 @@
+<html>
+	<h1>Rock Paper Scissors!</h1>
+	<form action="play" method="post">
+		<input type="radio" value="rock" name="choice" id="rock">Rock</input>
+		<input type="radio" value="paper" name="choice" id="paper">Paper</input>
+		<input type="radio" value="scissors" name="choice" id="scissors">Scissors</input>
+		<input type="submit" value="submit">
+	</form>
+
+	<h2>Results</h2>
+	<div>
+		CPU chose: <%= _cpuChoice %><br />
+		<h3>CPU Wins: <%= _scoreCPU %> <br /></h3>
+		<h3>Player Wins: <%= _scorePlayer %> <br /></h3>
+	</div>
+	
+	
+	<div>
+		Image Practice:
+		<img src="images/thing1" />
+		<img src="images/thing2" />
+		<img src="images/thing3" />
+	</div>
+
+</html>
+
