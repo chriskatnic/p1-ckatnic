@@ -9,7 +9,7 @@ app.set("view engine", "ejs");
 
 var scoreUser = 0;
 var scoreCPU = 0;
-
+var totalGames = 0;
 
 // GET '/' 
 // 
@@ -32,6 +32,7 @@ app.get('/', function(req, resp) {
 // resp = the response - should contain the updated html
 app.post("/play", function(req, resp) {
 
+	
 	// if the user clicked submit with no choice, 
 	// chastise them and don't do anything.
 	// else, play the game
@@ -118,19 +119,20 @@ app.post("/play", function(req, resp) {
 				break;
 		}
 	
+		var gameResult = "Tie Game!";
 		// update score
 		if(!tieGame) {
 			if( userWins ) {
 				scoreUser++;
+				gameResult = "Player Wins!";
 			} else {
 				scoreCPU++;
+				gameResult = "Computer Wins!";
 			}
 		}
-		
+			
 		//render template 
-		resp.render("index", {_scoreCPU: scoreCPU, _scorePlayer: scoreUser, _cpuChoice: cpuChoiceString});
-	
-		
+		resp.render("index", {_scoreCPU: scoreCPU, _scorePlayer: scoreUser, _cpuChoice: cpuChoiceString, _userChoice: userChoice,  _totalGames: ++totalGames, _gameResult: gameResult});			
 	}
 	
 });
